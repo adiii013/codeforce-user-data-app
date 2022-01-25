@@ -9,7 +9,7 @@ function SearchScreen({navigation}) {
         navigation.navigate('Result Screen')
     }
     const [problems,setProblems] = useState([{}])
-    const [profile,setProfile] = useState([{}])
+    const [profiledata,setProfile] = useState([{}])
 
     async function getData(){
         const data_prb = await fetch(`https://codeforces.com/api/user.status?handle=${name}&from=1&count=100`)
@@ -17,7 +17,7 @@ function SearchScreen({navigation}) {
         const data_prbJson = await data_prb.json();
         const data_userJson = await data_user.json();
         setProblems(data_prbJson.result);
-        setProfile(data_userJson.result);
+        setProfile(data_userJson);
     }
      
     function problem(){ 
@@ -25,7 +25,7 @@ function SearchScreen({navigation}) {
     }
     
     function prof(){
-        navigation.navigate('Profile',{profile,name});
+        navigation.navigate('Profile',{profiledata,name});
     }
 
     return (

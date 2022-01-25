@@ -3,7 +3,6 @@ import React from 'react';
 
 const PreviousSolved = ({ route }) => {
   const { name, problems } = route.params;
-  console.log(problems);
   return (
     <View style={styles.mainContainer}>
       <FlatList
