@@ -1,13 +1,13 @@
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 import React from 'react';
-import { AntDesign } from '@expo/vector-icons';
 
 const PreviousSolved = ({ route }) => {
   const { name, problems } = route.params;
   console.log(problems);
   return (
-    <View>
+    <View style={styles.mainContainer}>
       <FlatList
+      style={styles.listData}
         data={problems}
         renderItem={({ item }) => (
    
@@ -45,11 +45,18 @@ const PreviousSolved = ({ route }) => {
 };
 
 const styles = StyleSheet.create({
+  
+  mainContainer:{
+    flex:1,
+    backgroundColor:'white'
+  },
   container: {
     flexDirection: 'column',
     marginBottom: 15,
-    borderColor:'black',
-    borderWidth:0.5
+    backgroundColor:'#fdfbfb',
+    marginHorizontal:20,
+    borderRadius:20,
+    marginVertical:25
   },
   individual: {
     flexDirection: 'column',
@@ -57,12 +64,16 @@ const styles = StyleSheet.create({
   },
   first: {
     flexDirection: 'row',
-    justifyContent: 'space-evenly'
+    justifyContent: 'space-evenly',
+    padding:10
   },
   second: {
     flexDirection: 'row',
-    justifyContent: 'space-evenly'
-  }
+    justifyContent: 'space-evenly',
+    paddingBottom:10
+  },
+  listData:{
+  },
 })
 
 export default PreviousSolved;

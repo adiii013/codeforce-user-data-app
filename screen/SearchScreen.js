@@ -1,6 +1,5 @@
 import { Text, View, TextInput, StyleSheet , TouchableOpacity  } from 'react-native';
 import React , {useState} from 'react';
-import { Button } from 'react-native-web';
 
 
 function SearchScreen({navigation}) {
@@ -10,19 +9,24 @@ function SearchScreen({navigation}) {
         navigation.navigate('Result Screen')
     }
     const [problems,setProblems] = useState([{}])
+    const [profile,setProfile] = useState([{}])
 
     async function getData(){
-        const data = await fetch(`https://codeforces.com/api/user.status?handle=${name}&from=1&count=100`)
-        const dataJson = await data.json();
-        setProblems(dataJson.result);
+        const data_prb = await fetch(`https://codeforces.com/api/user.status?handle=${name}&from=1&count=100`)
+        const data_user = await fetch(`https://codeforces.com/api/user.info?handles=${name}`)
+        const data_prbJson = await data_prb.json();
+        const data_userJson = await data_user.json();
+        setProblems(data_prbJson.result);
+        setProfile(data_userJson.result);
     }
      
-    function prb(){
-        
+    function problem(){ 
       navigation.navigate('Previous Solved',{problems,name});
     }
-
-
+    
+    function prof(){
+        navigation.navigate('Profile',{profile,name});
+    }
 
     return (
         <View style={styles.maincontainer}>
@@ -37,10 +41,10 @@ function SearchScreen({navigation}) {
                 ></TextInput>
             </View>
             <View>
-                <TouchableOpacity style={styles.searchButton} onPress={search}>
+                <TouchableOpacity style={styles.searchButton} onPress={prof}>
                      <Text style = {styles.btt}>Profile</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.searchButton} onPress={prb}>
+                <TouchableOpacity style={styles.searchButton} onPress={problem}>
                      <Text style = {styles.btt}>Problem</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.searchButton} onPress={search}>

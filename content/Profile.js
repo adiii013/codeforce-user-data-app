@@ -1,10 +1,13 @@
 import { View, Text } from 'react-native';
-import React,{useContext} from 'react';
+import React from 'react';
 
-const Profile = () => {
+const Profile = ({route,navigation}) => {
+
+  const {profile,name} = route.params;
+
   return (
     <View>
-      <Text>Profile Screen name</Text>
+      <Text>Profile Screen name {name}</Text>
     </View>
   );
 };
