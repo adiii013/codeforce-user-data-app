@@ -1,6 +1,6 @@
 import { Text, View, TextInput, StyleSheet , TouchableOpacity  } from 'react-native';
 import React , {useState} from 'react';
-
+import { Feather } from '@expo/vector-icons';
 
 function SearchScreen({navigation}) {
 
@@ -31,7 +31,7 @@ function SearchScreen({navigation}) {
     return (
         <View style={styles.maincontainer}>
             <View style={styles.container}>
-                <Text style={styles.textData}>Enter Username</Text>
+                <Feather name='search' size={25} style={{marginLeft:10}}></Feather>
                 <TextInput
                     style={styles.inputText}
                     placeholder='Username'
@@ -62,13 +62,16 @@ const styles = StyleSheet.create({
         backgroundColor:'white',
     },
     container: {
-        flexDirection: 'column',
+        flexDirection: 'row',
         marginHorizontal: 50,
-        marginTop: 100,
-        alignItems: 'center'
+        marginTop: 50,
+        alignItems: 'center',
+        backgroundColor:'#F5F5F5',
+        borderRadius:10,
+        height:50
     },
     inputText: {
-        marginLeft: 10,
+        marginLeft: 15,
         borderBottomColor: 'black',
         borderBottomWidth: 0.5,
         padding: 2,
@@ -89,7 +92,7 @@ const styles = StyleSheet.create({
         marginTop:50
     },
     btt:{
-        backgroundColor:'#FFDADA',
+        backgroundColor:'#EA99D5',
         fontSize:30,
         borderRadius:10,
         padding:5
