@@ -10,14 +10,18 @@ function SearchScreen({navigation}) {
     }
     const [problems,setProblems] = useState([{}])
     const [profiledata,setProfile] = useState([{}])
+    const [ratingdata,setRating] = useState([{}])
 
     async function getData(){
         const data_prb = await fetch(`https://codeforces.com/api/user.status?handle=${name}&from=1&count=100`)
         const data_user = await fetch(`https://codeforces.com/api/user.info?handles=${name}`)
+        const data_rank = await fetch(`https://codeforces.com/api/user.rating?handle=${name}`)
         const data_prbJson = await data_prb.json();
         const data_userJson = await data_user.json();
+        const data_rankJson = await data_rank.json();
         setProblems(data_prbJson.result);
         setProfile(data_userJson);
+        setRating(data_rankJson.result);
     }
      
     function problem(){ 
@@ -26,6 +30,10 @@ function SearchScreen({navigation}) {
     
     function prof(){
         navigation.navigate('Profile',{profiledata,name});
+    }
+    
+    function onRating(){
+        navigation.navigate('Rating Change',{ratingdata,name});
     }
 
     return (
@@ -47,7 +55,7 @@ function SearchScreen({navigation}) {
                 <TouchableOpacity style={styles.searchButton} onPress={problem}>
                      <Text style = {styles.btt}>Problem</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.searchButton} onPress={search}>
+                <TouchableOpacity style={styles.searchButton} onPress={onRating}>
                      <Text style = {styles.btt}>Rating Change</Text>
                 </TouchableOpacity>
             </View>
@@ -59,7 +67,7 @@ const styles = StyleSheet.create({
     maincontainer:{
         flex:1,
         flexDirection:'column',
-        backgroundColor:'white',
+        backgroundColor:'#FEE3EC',
     },
     container: {
         flexDirection: 'row',
@@ -76,7 +84,8 @@ const styles = StyleSheet.create({
         borderBottomWidth: 0.5,
         padding: 2,
         fontSize: 20,
-        alignSelf: 'center'
+        alignSelf: 'center',
+        flex:1
     },
     textData: {
         alignSelf: 'center',

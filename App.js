@@ -13,7 +13,7 @@ function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Search User" component={SearchScreen}></Stack.Screen>
-          <Stack.Screen name="Result Screen" component={ResultScreen}></Stack.Screen>
+          <Stack.Screen name="Rating Change" component={ResultScreen}></Stack.Screen>
           <Stack.Screen name="Previous Solved" component={PreviousSolved}></Stack.Screen>
           <Stack.Screen name="Profile" component={Profile}></Stack.Screen>
         </Stack.Navigator>

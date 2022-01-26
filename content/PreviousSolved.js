@@ -13,31 +13,31 @@ const PreviousSolved = ({ route }) => {
           <View style={styles.container}>
             <View style={styles.first}>
               <View style={styles.individual}>
-                <Text>Index</Text>
+                <Text style={styles.textData}>Index</Text>
                 <Text>{item.problem.index}</Text>
               </View>
               <View style={styles.individual}>
-                <Text>Name</Text>
+                <Text style={styles.textData}>Name</Text>
                 <Text>{item.problem.name}</Text>
               </View>
             </View>
             <View style={styles.second}>
               <View style={styles.individual}>
-                <Text>Rating</Text>
+                <Text style={styles.textData}>Rating</Text>
                 <Text>{item.problem.rating}</Text>
               </View>
               <View style={styles.individual}>
-                <Text>Participant Type</Text>
+                <Text style={styles.textData}>Participant Type</Text>
                 <Text>{item.author.participantType}</Text>
               </View>
               <View style={styles.individual}>
-                <Text>Verdict</Text>
+                <Text style={styles.textData}>Verdict</Text>
                 <Text>{item.verdict}</Text>
               </View>
             </View>
           </View>
         )}
-
+        keyExtractor={(item, index) => index.toString()}
       ></FlatList>
     </View>
   );
@@ -47,12 +47,12 @@ const styles = StyleSheet.create({
   
   mainContainer:{
     flex:1,
-    backgroundColor:'white'
+    backgroundColor:'#FEE3EC'
   },
   container: {
     flexDirection: 'column',
     marginBottom: 15,
-    backgroundColor:'#fdfbfb',
+    backgroundColor:'#FFF9F9',
     marginHorizontal:20,
     borderRadius:20,
     marginVertical:25
@@ -71,8 +71,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     paddingBottom:10
   },
-  listData:{
-  },
+  textData:{
+    fontSize:15,
+    fontWeight:'bold'
+  }
 })
 
 export default PreviousSolved;
